@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -33,3 +34,222 @@
     @apply bg-white rounded-lg shadow-md p-6;
   }
 }
+
+  :root {
+    --lm-obsidian:   #0C0C0C;
+    --lm-espresso:   #1A1612;
+    --lm-gold:       #C9A96E;
+    --lm-gold-light: #E8D5A8;
+    --lm-ivory:      #F5F0E8;
+    --lm-stone:      #8A8070;
+    --lm-nav-bg:     #FDFAF6;
+    --lm-border:     rgba(201,169,110,0.18);
+    --lm-shadow:     0 1px 0 rgba(201,169,110,0.12), 0 4px 24px rgba(12,12,12,0.06);
+  }
+
+  .lm-nav {
+    background: var(--lm-nav-bg);
+    border-bottom: 1px solid var(--lm-border);
+    box-shadow: var(--lm-shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .lm-nav-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* ── Logo ── */
+  .lm-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+  .lm-logo-text {
+    font-family: 'Jost', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    color: var(--lm-obsidian);
+    line-height: 1;
+  }
+  .lm-logo-text span {
+    color: var(--lm-gold);
+  }
+  .lm-logo-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 9.5px;
+    letter-spacing: 0.22em;
+    color: var(--lm-stone);
+    text-transform: uppercase;
+    line-height: 1;
+    margin-top: 3px;
+    display: block;
+  }
+
+  /* ── Divider ── */
+  .lm-divider {
+    width: 1px;
+    height: 28px;
+    background: var(--lm-border);
+    margin: 0 0.5rem;
+  }
+
+  /* ── Nav links ── */
+  .lm-links {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .lm-link {
+    font-family: 'Jost', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--lm-stone);
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: color 0.2s, background 0.2s;
+    white-space: nowrap;
+  }
+  .lm-link:hover {
+    color: var(--lm-obsidian);
+    background: rgba(201,169,110,0.08);
+  }
+
+  /* ── Cart icon ── */
+  .lm-cart {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    border-radius: 4px;
+    color: var(--lm-stone);
+    text-decoration: none;
+    transition: color 0.2s, background 0.2s;
+  }
+  .lm-cart:hover {
+    color: var(--lm-obsidian);
+    background: rgba(201,169,110,0.08);
+  }
+  .lm-cart-badge {
+    position: absolute;
+    top: -2px;
+    right: -4px;
+    background: var(--lm-gold);
+    color: var(--lm-obsidian);
+    font-family: 'Jost', sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+
+  /* ── User pill ── */
+  .lm-user-pill {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 12px 5px 8px;
+    background: rgba(201,169,110,0.08);
+    border: 0.5px solid var(--lm-border);
+    border-radius: 100px;
+    font-family: 'Jost', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--lm-obsidian);
+    letter-spacing: 0.04em;
+  }
+  .lm-user-pill svg {
+    color: var(--lm-gold);
+  }
+
+  /* ── Logout button ── */
+  .lm-logout {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    border-radius: 4px;
+    color: var(--lm-stone);
+    transition: color 0.2s, background 0.2s;
+  }
+  .lm-logout:hover {
+    color: #c0392b;
+    background: rgba(192,57,43,0.06);
+  }
+
+  /* ── Auth buttons ── */
+  .lm-btn-login {
+    font-family: 'Jost', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--lm-stone);
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 4px;
+    transition: color 0.2s, background 0.2s;
+  }
+  .lm-btn-login:hover {
+    color: var(--lm-obsidian);
+    background: rgba(201,169,110,0.08);
+  }
+  .lm-btn-register {
+    font-family: 'Jost', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--lm-obsidian);
+    text-decoration: none;
+    padding: 8px 18px;
+    background: var(--lm-gold);
+    border-radius: 4px;
+    transition: background 0.2s, transform 0.15s;
+    white-space: nowrap;
+  }
+  .lm-btn-register:hover {
+    background: var(--lm-gold-light);
+    transform: translateY(-1px);
+  }
+
+  /* ── Admin / Seller badges ── */
+  .lm-role-badge {
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 4px 10px;
+    border-radius: 3px;
+    border: 0.5px solid var(--lm-border);
+    color: var(--lm-gold);
+    background: rgba(201,169,110,0.06);
+    transition: background 0.2s;
+  }
+  .lm-role-badge:hover {
+    background: rgba(201,169,110,0.14);
+  }

@@ -5,6 +5,7 @@ import { fetchProductById } from '../store/slices/productSlice';
 import { addToCart } from '../store/slices/cartSlice';
 import toast from 'react-hot-toast';
 import { ShoppingCart, Star, User } from 'lucide-react';
+import { formatIndianCurrency } from '../utils/currency';
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -82,7 +83,7 @@ const ProductDetail = () => {
           </div>
 
           <div className="text-4xl font-bold text-primary-600 mb-4">
-            ${product.price}
+            {formatIndianCurrency(product.price)}
           </div>
 
           <p className="text-gray-600 mb-6">{product.description}</p>

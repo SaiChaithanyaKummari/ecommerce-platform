@@ -6,7 +6,7 @@ const Home = () => {
     <div>
       <div className="text-center py-16">
         <h1 className="text-5xl font-bold text-gray-900 mb-4">
-          Welcome to ShopHub
+          Welcome to LuxeMart
         </h1>
         <p className="text-xl text-gray-600 mb-8">
           Your one-stop shop for everything you need
@@ -14,7 +14,7 @@ const Home = () => {
         <div className="flex justify-center space-x-4">
           <Link
             to="/products"
-            className="btn btn-primary flex items-center space-x-2"
+            className="lm-btn-register flex items-center space-x-2"
           >
             <span>Start Shopping</span>
             <ArrowRight className="w-5 h-5" />

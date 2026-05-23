@@ -1,7 +1,7 @@
 const Cart = require('../models/Cart');
 const Product = require('../models/Product');
 const Coupon = require('../models/Coupon');
-const { redisClient } = require('../config/redis');
+const redisClient = require('../config/redis');
 
 const RESERVATION_DURATION = 15 * 60 * 1000; // 15 minutes
 
@@ -95,11 +95,12 @@ const addToCart = async (req, res, next) => {
 
     await cart.save();
 
-    // Store reservation in Redis for quick access
-    await redisClient.setEx(
+    // Store reservation in Redis for quick access (ioredis syntax)
+    await redisClient.set(
       `reservation:${cart._id}:${productId}`,
-      Math.floor(RESERVATION_DURATION / 1000),
-      JSON.stringify({ quantity, reservedUntil })
+      JSON.stringify({ quantity, reservedUntil }),
+      'EX',
+      Math.floor(RESERVATION_DURATION / 1000)
     );
 
     res.status(200).json({
@@ -164,11 +165,12 @@ const updateCartItem = async (req, res, next) => {
 
     await cart.save();
 
-    // Update Redis reservation
-    await redisClient.setEx(
+    // Update Redis reservation (ioredis syntax)
+    await redisClient.set(
       `reservation:${cart._id}:${item.product}`,
-      Math.floor(RESERVATION_DURATION / 1000),
-      JSON.stringify({ quantity, reservedUntil: item.reservedUntil })
+      JSON.stringify({ quantity, reservedUntil: item.reservedUntil }),
+      'EX',
+      Math.floor(RESERVATION_DURATION / 1000)
     );
 
     res.status(200).json({

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from '../utils/axios';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
+import { formatIndianCurrency } from '../utils/currency';
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
@@ -70,14 +71,14 @@ const Orders = () => {
                 {order.items.map((item, index) => (
                   <div key={index} className="flex justify-between text-sm">
                     <span>{item.name} x {item.quantity}</span>
-                    <span>${(item.price * item.quantity).toFixed(2)}</span>
+                    <span>{formatIndianCurrency(item.price * item.quantity)}</span>
                   </div>
                 ))}
               </div>
 
               <div className="border-t pt-4 flex justify-between items-center">
                 <div>
-                  <p className="font-bold text-lg">Total: ${order.totalAmount.toFixed(2)}</p>
+                  <p className="font-bold text-lg">Total: {formatIndianCurrency(order.totalAmount)}</p>
                   {order.paidAt && (
                     <p className="text-sm text-green-600">Paid on {new Date(order.paidAt).toLocaleDateString()}</p>
                   )}

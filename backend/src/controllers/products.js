@@ -11,7 +11,7 @@ const getProducts = async (req, res, next) => {
       sortBy = 'createdAt',
       sortOrder = 'desc',
       page = 1,
-      limit = 10
+      limit = 16
     } = req.query;
 
     const skip = (parseInt(page) - 1) * parseInt(limit);

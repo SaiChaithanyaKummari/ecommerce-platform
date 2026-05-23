@@ -1,7 +1,7 @@
 const Queue = require('bull');
 const Cart = require('../models/Cart');
 const Product = require('../models/Product');
-const { redisClient } = require('../config/redis');
+const redisClient = require('../config/redis');
 const emailQueue = require('./emailQueue');
 
 const inventoryQueue = new Queue('inventory', process.env.REDIS_URL || 'redis://localhost:6379', {

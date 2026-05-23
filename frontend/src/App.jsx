@@ -1,6 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import Layout from './components/Layout';
+import Layout from './components/NavBar';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Home from './pages/Home';
@@ -22,44 +22,15 @@ function App() {
     <Layout>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
-        <Route path="/register" element={!user ? <Register /> : <Navigate to="/" />} />
+        <Route path="/login" element={!user ? <Login /> : <Navigate to="/" replace />} />
+        <Route path="/register" element={!user ? <Register /> : <Navigate to="/" replace />} />
         <Route path="/products" element={<ProductList />} />
-        <Route path="/products/:id" element={<ProductDetail />} />
+        <Route path="/products/:id" element={<ProtectedRoute><ProductDetail /></ProtectedRoute>}/>
         <Route path="/cart" element={<Cart />} />
-        <Route
-          path="/checkout"
-          element={
-            <ProtectedRoute>
-              <Checkout />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/orders"
-          element={
-            <ProtectedRoute>
-              <Orders />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/admin/dashboard"
-          element={
-            <AdminRoute>
-              <AdminDashboard />
-            </AdminRoute>
-          }
-        />
-        <Route
-          path="/seller/dashboard"
-          element={
-            <SellerRoute>
-              <SellerDashboard />
-            </SellerRoute>
-          }
-        />
-      </Routes>
+        <Route path="/checkout" element={<ProtectedRoute><Checkout /></ProtectedRoute>}/>
+        <Route path="/orders" element={<ProtectedRoute><Orders /></ProtectedRoute>}/>
+        <Route path="/admin/dashboard" element={<AdminRoute><AdminDashboard /></AdminRoute>}/>
+        <Route path="/seller/dashboard" element={<SellerRoute><SellerDashboard /></SellerRoute>}/></Routes>
     </Layout>
   );
 }

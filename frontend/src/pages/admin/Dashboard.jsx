@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from '../../utils/axios';
 import toast from 'react-hot-toast';
 import { DollarSign, ShoppingCart, Package, Users, TrendingUp, AlertTriangle } from 'lucide-react';
+import { formatIndianCurrency } from '../../utils/currency';
 
 const AdminDashboard = () => {
   const [stats, setStats] = useState(null);
@@ -40,7 +41,7 @@ const AdminDashboard = () => {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-gray-500 text-sm">Total Sales</p>
-              <p className="text-2xl font-bold">${stats.totalSales.toFixed(2)}</p>
+              <p className="text-2xl font-bold">{formatIndianCurrency(stats.totalSales)}</p>
             </div>
             <DollarSign className="w-10 h-10 text-green-600" />
           </div>
@@ -92,7 +93,7 @@ const AdminDashboard = () => {
                     <p className="text-sm text-gray-500">{order.user?.name || 'Unknown'}</p>
                   </div>
                   <div className="text-right">
-                    <p className="font-bold">${order.totalAmount.toFixed(2)}</p>
+                    <p className="font-bold">{formatIndianCurrency(order.totalAmount)}</p>
                     <span className={`text-xs px-2 py-1 rounded ${
                       order.orderStatus === 'delivered' ? 'bg-green-100 text-green-800' :
                       order.orderStatus === 'cancelled' ? 'bg-red-100 text-red-800' :

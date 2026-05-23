@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { fetchCart, updateCartItem, removeFromCart, applyCoupon, clearCart } from '../store/slices/cartSlice';
 import toast from 'react-hot-toast';
 import { Trash2, Clock, Tag, ShoppingCart } from 'lucide-react';
+import { formatIndianCurrency } from '../utils/currency';
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -109,7 +110,7 @@ const Cart = () => {
                 )}
                 <div className="flex-1">
                   <h3 className="font-semibold mb-1">{item.name}</h3>
-                  <p className="text-primary-600 font-bold mb-2">${item.price}</p>
+                  <p className="text-primary-600 font-bold mb-2">{formatIndianCurrency(item.price)}</p>
                   
                   <div className="flex items-center space-x-4 mb-2">
                     <div className="flex items-center">
@@ -139,11 +140,8 @@ const Cart = () => {
                 </div>
 
                 <div className="text-right">
-                  <p className="font-bold text-lg">${(item.price * item.quantity).toFixed(2)}</p>
-                  <button
-                    onClick={() => handleRemoveItem(item._id)}
-                    className="text-red-600 hover:text-red-700 mt-2"
-                  >
+                  <p className="font-bold text-lg">{formatIndianCurrency(item.price * item.quantity)}</p>
+                  <button onClick={() => handleRemoveItem(item._id)} className="text-red-600 hover:text-red-700 mt-2">
                     <Trash2 className="w-5 h-5" />
                   </button>
                 </div>
@@ -159,17 +157,17 @@ const Cart = () => {
             <div className="space-y-2 mb-4">
               <div className="flex justify-between">
                 <span>Subtotal</span>
-                <span>${subtotal.toFixed(2)}</span>
+                <span>{formatIndianCurrency(subtotal)}</span>
               </div>
               {discount > 0 && (
                 <div className="flex justify-between text-green-600">
                   <span>Discount</span>
-                  <span>-${discount.toFixed(2)}</span>
+                  <span>-{formatIndianCurrency(discount)}</span>
                 </div>
               )}
               <div className="flex justify-between font-bold text-lg border-t pt-2">
                 <span>Total</span>
-                <span>${totalAfterDiscount.toFixed(2)}</span>
+                <span>{formatIndianCurrency(totalAfterDiscount)}</span>
               </div>
             </div>
 
