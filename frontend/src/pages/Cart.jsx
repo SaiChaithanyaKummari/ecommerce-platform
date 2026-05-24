@@ -85,7 +85,7 @@ const Cart = () => {
       <div className="text-center py-16">
         <ShoppingCart className="w-24 h-24 text-gray-300 mx-auto mb-4" />
         <h2 className="text-2xl font-bold mb-4">Your cart is empty</h2>
-        <Link to="/products" className="btn btn-primary">
+        <Link to="/products" className="lm-btn-register ">
           Continue Shopping
         </Link>
       </div>

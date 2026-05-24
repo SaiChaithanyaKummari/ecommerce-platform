@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ShoppingCart, User, LogOut } from 'lucide-react';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../store/slices/authSlice';
@@ -17,6 +17,7 @@ const Layout = ({ children }) => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
   const { items } = useSelector((state) => state.cart);
+  const location = useLocation();
 
   const handleLogout = () => dispatch(logout());
   const cartItemCount = items.reduce((sum, item) => sum + item.quantity, 0);
@@ -35,7 +36,12 @@ const Layout = ({ children }) => {
             </div>
           </Link>
           <div className="lm-links">
-            <Link to="/products" className="lm-link">Products</Link>
+            <Link
+              to="/products"
+              className={`lm-link ${location.pathname === '/products' ? 'lm-link-active' : ''}`}
+            >
+              Products
+            </Link>
             <div className="lm-divider" />
             <Link to="/cart" className="lm-cart" aria-label="Cart">
               <ShoppingCart size={20} />

@@ -119,8 +119,7 @@ const ProductDetail = () => {
               <span className="mx-4 text-xl font-semibold">{quantity}</span>
               <button
                 onClick={() => setQuantity(Math.min(product.stock, quantity + 1))}
-                className="btn btn-secondary px-3"
-              >
+                className="btn btn-secondary px-3">
                 +
               </button>
             </div>
@@ -129,8 +128,7 @@ const ProductDetail = () => {
           <button
             onClick={handleAddToCart}
             disabled={product.stock === 0}
-            className="w-full btn btn-primary flex items-center justify-center space-x-2 disabled:opacity-50"
-          >
+            className="w-full btn btn-primary flex items-center justify-center space-x-2 disabled:opacity-50">
             <ShoppingCart className="w-5 h-5" />
             <span>{product.stock === 0 ? 'Out of Stock' : 'Add to Cart'}</span>
           </button>

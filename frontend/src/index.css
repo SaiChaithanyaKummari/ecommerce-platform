@@ -253,3 +253,12 @@
   .lm-role-badge:hover {
     background: rgba(201,169,110,0.14);
   }
+
+  .pagination-btn {
+    @apply btn btn-secondary;
+  }
+  .pagination-btn-active {
+    background: var(--lm-gold);
+    color: var(--lm-obsidian);
+    border: none;
+  }
